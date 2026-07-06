@@ -1,4 +1,4 @@
-# SparseHybrids_TCstage1
+# SparseHybrids_TCstage1: simulation 1.0
 Simulations for stage 1 testcrosses: GCA and SCA
 
 Testcross_Scripts:
