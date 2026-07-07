@@ -1,6 +1,6 @@
   ## Loop over dominance, tester levels, diagnostics to choose a tester with random sampling ##
   # Here I just added some diagnostics proposed by DT to choose testers and ignore the phenotypic values simulation
-  # March 26, 2026, PaulaE
+  # Updated version July 2026 for 9 months report, PaulaE
   rm(list = ls())
   # .rs.restartR()
   
