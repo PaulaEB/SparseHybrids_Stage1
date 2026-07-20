@@ -11,8 +11,8 @@ Simulation1.0_testcross:
 * Step1_testcross.Rmd: First, simplest version: additive-only trait. Kept as a baseline/reference.
 
 Simulation2.0_theoretical_framework:
-*TesterIndex_v2.R: Script to calculate representativeness, redundancy and discrimination metrics within pool. Simulation of QTL and LD for both pools. 
+* TesterIndex_v2.R: Script to calculate representativeness, redundancy and discrimination metrics within pool. Simulation of QTL and LD for both pools. 
 
-*Tester4Sven_DT_v2_dummyPE.R: Script of the proof-of-concept of aligned SCA for a single tester with completely complementary heterotic pools.
+* Tester4Sven_DT_v2_dummyPE.R: Script of the proof-of-concept of aligned SCA for a single tester with completely complementary heterotic pools.
 
-*peskyGCA.R: Script to demonstrate how allele frequencies of the pools are important for short- and long-term selection of parents by their GCA and importance of developing complementarity in the heterotic pools from the basics of QG.
+* peskyGCA.R: Script to demonstrate how allele frequencies of the pools are important for short- and long-term selection of parents by their GCA and importance of developing complementarity in the heterotic pools from the basics of QG.
