@@ -1,6 +1,3 @@
-
-
-
 # Below we will consider two examples,
 # The first will have -1 genotype favoured in pool 1 and +1 favoured in pool 2 reflected in the GCA.
 # The second will have +1 genotype favoured in both pools in terms of GCA, but the -1 genotype in pool 1
@@ -172,6 +169,57 @@ lines(unique(c(X12cent))[c(1,1)], c(gca[2], gca[2] + unique(c(sca))[4])) # new l
 # also, we can see the above favours moving pool 1 to -1 genotype and pool 2 to +1 genotype
 # below, we will see what happens when GCAs do not favour this, although the locus still has d = 2 > a = 1 like here
 
+# assume pop2 (rows) is testers
+Hcent_T <- t(scale(t(H), scale = FALSE))
+rowMeans(Hcent_T)
+p_T <- as.numeric(X2 == 1)
+q_T <- 1- p_T
+(alpha_T <- a+(q_T - p_T)*d)
+apply(rep(alpha_T, 10)*X12, 1, var)
+# 0.1777778 0.1777778 0.1777778 0.1777778 0.1777778 0.1777778 1.6000000 0.1777778 0.1777778 0.1777778
+# variance of testcrosses, showing that tester with -1 has highest variance
+# lets show this below logically...
+# a=1, d= 2, the favourable testers have genotype = 1, given pool 1 has allele frequencies p = 0.2, q = 0.8
+
+X1
+# aa  Aa
+# 0.8 0.2
+gca1 # so 5 & 6 which are +1 genotype have lower gca's than the -1 genotyps, 
+# so we want to show gca(g = -1) > gca(g = +1)
+# This means that if we have a tester which is AA, it produces hybrids
+# Aa     AA
+# at frequencies
+# 0.8 and 0.2
+# d      a
+# meaning that a pool 1 parent with aa has hybrids Aa with d =2, 
+# while a parent with AA has hybrids AA with a = 1.
+# so the gap is 1.
+
+# Alternatively, if we have a tester which is aa, it produces hybrids
+# Aa     aa
+# at frequencies
+# 0.2 and 0.8
+# d      -a
+# meaning that a pool 1 parent with aa has hybrids aa with -a =-1, 
+# while a parent with AA has hybrids Aa with d = 2.
+# so the gap is 3.
+
+# in both cases, the rankings of parent GCA's are correct, but a tester
+# with -1 will give greater variance as shown by below
+apply(rep(alpha_T, 10)*X12, 1, var)*9/10 # note we need to multiply by 9/10 since var uses 1/(n-1) instead of 1/n
+0.5*(1+F11)*p1_obs*q1_obs*alpha_T^2
+
+# ok, so the above works for a single tester. If you are interested in the full factorial, i'll leave it to you.
+# but the above shows the tester case perfectly.
+# I would suggest doing the reciprocal crosses (testers are pool 1), since it will show a different tester state which is favorable...
+
+
+# additive variance in the hybrids
+(F11 <- 1 - mean(X1==0) / (2*p1_obs*q1_obs))
+(sigma_tc = 0.5*(1+F11)*p1_obs*q1_obs*((alpha_T)^2))
+
+(mu_tc <- a * (p1_obs * p2_obs - q1_obs * q2_obs) + d * (p1_obs * q2_obs + p2_obs * q1_obs))
+(mean(H))
 
 ######################################
 # Example 2
